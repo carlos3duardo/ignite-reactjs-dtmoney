@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { darken, transparentize } from 'polished';
 
 export const Container = styled.form`
   h2 {
@@ -54,13 +54,26 @@ export const TransactionTypeContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+`;
 
-  button {
+interface TransactionTypeButtonProps {
+  isActive: boolean;
+  activeColor: 'green' | 'red';
+}
+
+const colors = {
+  green: '#33cc95',
+  red: '#e52e4d'
+};
+
+export const TransactionTypeButton = styled.button<TransactionTypeButtonProps>`
     height: 4rem;
-    border: 1px solid var(--button-border);
+    border: 1px solid #d7d7d7;
     border-radius: 0.25rem;
 
-    background: transparent;
+    background: ${(props) => props.isActive
+      ? transparentize(0.9, colors[props.activeColor])
+      : 'transparent'};
 
     display: flex;
     flex-direction: row;
@@ -84,6 +97,4 @@ export const TransactionTypeContainer = styled.div`
       font-size: 1rem;
       color: var(--text-title);
     }
-
-  }
 `;
