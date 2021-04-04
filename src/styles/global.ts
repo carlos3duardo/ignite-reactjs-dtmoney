@@ -20,6 +20,8 @@ export const GlobalStyle = createGlobalStyle`
 
     --input-background: #e7e9ee;
     --input-border: 1px solid #d7d7d7;
+
+    --button-border: #d7d7d7;
   }
 
   * {
