@@ -8,27 +8,34 @@ createServer({
     transaction: Model,
   },
 
+  seeds(server) {
+    server.db.loadData({
+      transactions: [
+        {
+          id: 1,
+          title: 'Website - Padaria do Joaquim',
+          amount: 3600,
+          type: 'deposit',
+          category: 'Freelance',
+          createdAt: new Date('2021-01-06 10:42:00')
+        },{
+          id: 2,
+          title: 'Almoços',
+          amount: 440,
+          type: 'withdraw',
+          category: 'Alimentação',
+          createdAt: new Date('2021-01-10 13:44:00')
+        }
+      ]
+    })
+  },
+
   routes() {
     this.namespace = 'api';
 
     this.get('/transactions', () => {
       return this.schema.all('transaction');
-      // return [
-      //   {
-      //     id: 1,
-      //     title: 'Transaction 1',
-      //     amount: 400,
-      //     type: 'deposit',
-      //     category: 'Freelance Job'
-      //   },{
-      //     id: 2,
-      //     title: 'Transaction 2',
-      //     amount: 80,
-      //     type: 'withdraw',
-      //     category: 'Food'
-      //   }
-      // ]
-    })
+    });
 
     this.post('/transactions', (schema, request) => {
       const data = JSON.parse(request.requestBody);
