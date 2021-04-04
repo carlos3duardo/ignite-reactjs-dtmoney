@@ -43,7 +43,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body, input, textarea, button {
-    font-family: 'Poppins', Helvetica, Arial, sans-serif;
+    font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
     font-weight: var(--font-regular);
   }
 
